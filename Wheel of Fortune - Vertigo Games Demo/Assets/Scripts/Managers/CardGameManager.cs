@@ -2,17 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardGameManager : MonoBehaviour
+public class CardGameManager : Singleton<CardGameManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Controller References")]
+    public ZoneController zoneController;
+    public WheelController wheelController;
+    public RewardController rewardController;
+
+    protected override void AwakeSingleton()
     {
-        
+        zoneController.Initialize();
+        rewardController.Initialize();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void GenerateRewards()
     {
-        
+        rewardController.GenerateNewRewards();
+        wheelController.DisplayNewRewards(rewardController.GetPossibleRewards());
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            GenerateRewards();
+        }
     }
 }

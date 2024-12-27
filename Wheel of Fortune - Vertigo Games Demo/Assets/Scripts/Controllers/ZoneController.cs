@@ -24,7 +24,7 @@ public class ZoneController : MonoBehaviour
     [Header("Zone Values")]
     [SerializeField] private float moveTime = 1f;
 
-    private void Awake()
+    public void Initialize()
     {
         InitializeZone();
     }
