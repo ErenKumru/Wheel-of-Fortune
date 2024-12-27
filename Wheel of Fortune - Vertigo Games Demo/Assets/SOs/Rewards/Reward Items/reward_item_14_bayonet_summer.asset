@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a1eaf749b5d07040a0a53f2e858c201, type: 3}
+  m_Name: reward_item_14_bayonet_summer
+  m_EditorClassIdentifier: 
+  id: 14
+  itemName: Bayonet Summer
+  icon: {fileID: 21300000, guid: dce4123dd3d0f7a4c964a39e43d5c0ef, type: 3}
+  isBomb: 0
