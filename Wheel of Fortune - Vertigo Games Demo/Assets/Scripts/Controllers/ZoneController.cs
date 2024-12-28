@@ -43,7 +43,8 @@ public class ZoneController : MonoBehaviour
     private void ResizeZonePanel(float zoneNumberWidth)
     {
         float zonePanelWidth = (zoneNumberCount - 2) * zoneNumberWidth;
-        zonePanelRectTransform.sizeDelta = Vector2Utility.SetXValue(zonePanelRectTransform.sizeDelta, zonePanelWidth);
+        Vector2 sizeDelta = zonePanelRectTransform.sizeDelta;
+        zonePanelRectTransform.sizeDelta = sizeDelta.SetXValue(zonePanelWidth);
     }
 
     private void InitializeZonePanelValues(float zoneNumberWidth)

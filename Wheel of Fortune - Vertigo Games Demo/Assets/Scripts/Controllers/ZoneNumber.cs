@@ -15,7 +15,8 @@ public class ZoneNumber : MonoBehaviour
     public virtual void Initialize(int index)
     {
         //Set initial position
-        rectTransform.anchoredPosition = Vector2Utility.SetXValue(rectTransform.anchoredPosition, rectTransform.rect.width * index);
+        Vector2 anchoredPos = rectTransform.anchoredPosition;
+        rectTransform.anchoredPosition = anchoredPos.SetXValue(rectTransform.rect.width * index);
 
         //Set initial number
         number = index + 1;
