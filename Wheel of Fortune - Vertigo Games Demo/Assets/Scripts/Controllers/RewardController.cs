@@ -61,8 +61,13 @@ public class RewardController : MonoBehaviour
     public void DisplayReward(int rewardIndex)
     {
         Reward reward = possibleRewards[rewardIndex];
-        rewardDisplayer.SetCardData(reward);
-        rewardDisplayer.DisplayRewardCard();
+        rewardDisplayer.SetRewardCardData(reward);
+        rewardDisplayer.DisplayRewardCard(this);
+    }
+
+    public void RegenerateRewards()
+    {
+        CardGameManager.Instance.GenerateRewards();
     }
 
     public Reward[] GetPossibleRewards()

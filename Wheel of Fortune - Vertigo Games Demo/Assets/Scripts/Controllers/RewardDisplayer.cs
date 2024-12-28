@@ -12,23 +12,35 @@ public class RewardDisplayer : MonoBehaviour
     [SerializeField] private TMP_Text rewardCardNameText;
     [SerializeField] private Image rewardCardIcon;
     [SerializeField] private TMP_Text rewardCardAmountText;
-    [SerializeField] private float scaleTime = 0.5f, displayTime = 2f;
+    [SerializeField] private float scaleTime = 0.5f, displayTime = 1f;
     [SerializeField] private Ease scaleEase = Ease.OutCubic;
 
-    public void DisplayRewardCard()
+    public void DisplayRewardCard(RewardController rewardController)
     {
         rewardCardRectTransform.gameObject.SetActive(true);
 
         rewardCardRectTransform.DOScale(Vector2.one, scaleTime).From(Vector2.zero).SetEase(scaleEase).OnComplete(()=>
         {
-            rewardCardRectTransform.DOScale(Vector2.zero, scaleTime).SetDelay(displayTime).SetEase(scaleEase).OnComplete(()=>
-            {
-                rewardCardRectTransform.gameObject.SetActive(false);
-            });
+            BeginCardDisplayedProcesses(rewardController);
         });
     }
 
-    public void SetCardData(RewardController.Reward reward)
+    private void BeginCardDisplayedProcesses(RewardController rewardController)
+    {
+        rewardController.RegenerateRewards();
+        //TODO: Display reward in collection area (maybe jump/shoot it)
+        HideRewardCard();
+    }
+
+    private void HideRewardCard()
+    {
+        rewardCardRectTransform.DOScale(Vector2.zero, scaleTime).SetDelay(displayTime).SetEase(scaleEase).OnComplete(() =>
+        {
+            rewardCardRectTransform.gameObject.SetActive(false);
+        });
+    }
+
+    public void SetRewardCardData(RewardController.Reward reward)
     {
         rewardCardNameText.text = reward.rewardItem.itemName;
         rewardCardIcon.sprite = reward.rewardItem.icon;

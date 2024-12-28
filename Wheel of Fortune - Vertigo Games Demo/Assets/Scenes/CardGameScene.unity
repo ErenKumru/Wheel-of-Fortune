@@ -1993,7 +1993,7 @@ MonoBehaviour:
   rewardCardIcon: {fileID: 1996888504}
   rewardCardAmountText: {fileID: 744614186}
   scaleTime: 0.5
-  displayTime: 2
+  displayTime: 1
   scaleEase: 9
 --- !u!1 &971258042
 GameObject:
