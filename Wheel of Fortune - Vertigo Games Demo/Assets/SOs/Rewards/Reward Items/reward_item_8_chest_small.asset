@@ -15,4 +15,6 @@ MonoBehaviour:
   id: 8
   itemName: Chest Small
   icon: {fileID: 21300000, guid: 961af773e2344854bafddfa894620770, type: 3}
+  minAmount: 1
+  maxAmount: 100
   isBomb: 0

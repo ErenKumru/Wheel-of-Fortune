@@ -15,4 +15,6 @@ MonoBehaviour:
   id: 7
   itemName: Chest Silver
   icon: {fileID: 21300000, guid: 0a317afdf49a9b344b9601c743ff655d, type: 3}
+  minAmount: 1
+  maxAmount: 25
   isBomb: 0

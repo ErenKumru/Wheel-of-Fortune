@@ -6,5 +6,6 @@ using UnityEngine;
 public class RewardLibrarySO : ScriptableObject
 {
     public List<RewardItemSO> rewardItems;
+    public List<RewardItemSO> specialRewardItems;
     public RewardItemSO bomb;
 }

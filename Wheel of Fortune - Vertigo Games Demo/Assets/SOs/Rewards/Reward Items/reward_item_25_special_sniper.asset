@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a1eaf749b5d07040a0a53f2e858c201, type: 3}
-  m_Name: reward_item_6_chest_gold
+  m_Name: reward_item_25_special_sniper
   m_EditorClassIdentifier: 
-  id: 6
-  itemName: Chest Gold
-  icon: {fileID: 21300000, guid: 7fc2e421c99becf48855278375bcebc1, type: 3}
+  id: 25
+  itemName: Sniper
+  icon: {fileID: 21300000, guid: 1146bd1eca789a442bebf78c818d88b4, type: 3}
   minAmount: 1
-  maxAmount: 50
+  maxAmount: 1
   isBomb: 0

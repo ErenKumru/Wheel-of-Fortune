@@ -15,4 +15,6 @@ MonoBehaviour:
   id: 5
   itemName: Chest Bronze
   icon: {fileID: 21300000, guid: df1d70f7af8df504fa3440ca12119b1a, type: 3}
+  minAmount: 1
+  maxAmount: 100
   isBomb: 0

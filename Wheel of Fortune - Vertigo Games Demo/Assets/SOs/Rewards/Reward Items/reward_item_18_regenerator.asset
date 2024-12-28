@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a1eaf749b5d07040a0a53f2e858c201, type: 3}
-  m_Name: reward_item_12_helmet_pumpkin
+  m_Name: reward_item_18_regenerator
   m_EditorClassIdentifier: 
-  id: 12
-  itemName: Helmet Pumpkin
-  icon: {fileID: 21300000, guid: ecb6869d1a849684f9713c2c3eecd169, type: 3}
+  id: 18
+  itemName: Regenerator
+  icon: {fileID: 21300000, guid: e478d72a4f7a2e040b6296c7051fefd0, type: 3}
+  minAmount: 1
+  maxAmount: 50
   isBomb: 0

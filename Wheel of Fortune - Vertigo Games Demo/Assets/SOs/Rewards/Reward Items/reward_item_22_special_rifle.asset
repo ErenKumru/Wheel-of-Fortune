@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a1eaf749b5d07040a0a53f2e858c201, type: 3}
-  m_Name: reward_item_2_cap_easter
+  m_Name: reward_item_22_special_rifle
   m_EditorClassIdentifier: 
-  id: 2
-  itemName: Cap Easter
-  icon: {fileID: 21300000, guid: d9d61eaa70d747143b4164cac6625cc6, type: 3}
+  id: 22
+  itemName: Rifle
+  icon: {fileID: 21300000, guid: 35fb2818963d5794cbbf6161a6a003b4, type: 3}
+  minAmount: 1
+  maxAmount: 1
   isBomb: 0

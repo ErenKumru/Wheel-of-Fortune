@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a1eaf749b5d07040a0a53f2e858c201, type: 3}
-  m_Name: reward_item_6_chest_gold
+  m_Name: reward_item_17_neurostim
   m_EditorClassIdentifier: 
-  id: 6
-  itemName: Chest Gold
-  icon: {fileID: 21300000, guid: 7fc2e421c99becf48855278375bcebc1, type: 3}
+  id: 17
+  itemName: Neurostim
+  icon: {fileID: 21300000, guid: 365687778a8a58546997884a9f3ea6a8, type: 3}
   minAmount: 1
-  maxAmount: 50
+  maxAmount: 100
   isBomb: 0

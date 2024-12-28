@@ -15,4 +15,6 @@ MonoBehaviour:
   id: 9
   itemName: Chest Standart
   icon: {fileID: 21300000, guid: 120a7e5bd74f58b48877abe800b90d0a, type: 3}
+  minAmount: 1
+  maxAmount: 50
   isBomb: 0

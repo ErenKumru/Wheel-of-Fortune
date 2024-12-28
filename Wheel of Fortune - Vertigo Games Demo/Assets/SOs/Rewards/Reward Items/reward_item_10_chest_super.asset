@@ -15,4 +15,6 @@ MonoBehaviour:
   id: 10
   itemName: Chest Super
   icon: {fileID: 21300000, guid: 392021200d6ab6641a520ad02c4b9fb2, type: 3}
+  minAmount: 1
+  maxAmount: 5
   isBomb: 0

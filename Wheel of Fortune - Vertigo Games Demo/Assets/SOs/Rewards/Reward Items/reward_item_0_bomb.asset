@@ -15,4 +15,6 @@ MonoBehaviour:
   id: 0
   itemName: Bomb
   icon: {fileID: 21300000, guid: 8ad690e8efe8e844abc9f0630bc80c56, type: 3}
+  minAmount: 1
+  maxAmount: 1
   isBomb: 1
