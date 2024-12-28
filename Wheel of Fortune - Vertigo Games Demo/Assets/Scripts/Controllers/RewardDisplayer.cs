@@ -32,7 +32,7 @@ public class RewardDisplayer : MonoBehaviour
 
     private void BeginCardDisplayedProcesses(RewardController rewardController, RewardController.Reward reward)
     {
-        rewardController.RegenerateRewards();
+        rewardController.Progress();
         AddRewardToCollection(reward);
         HideRewardCard();
     }

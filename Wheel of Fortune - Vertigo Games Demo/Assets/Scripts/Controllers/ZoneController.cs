@@ -23,6 +23,7 @@ public class ZoneController : MonoBehaviour
 
     [Header("Zone Values")]
     [SerializeField] private float moveTime = 1f;
+    [SerializeField] private float delayTime = 1f;
 
     public void Initialize()
     {
@@ -103,26 +104,18 @@ public class ZoneController : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Z))
-        {
-            ProgressZone();
-        }
-    }
-
-    private void ProgressZone()
+    public void ProgressZone()
     {
         currentZone++;
 
         foreach(ZoneNumber zoneNumber in zoneNumbers)
         {
-            zoneNumber.Progress(zoneNumberCount, zoneStartPosX, zoneEndPosX, moveTime);
+            zoneNumber.Progress(zoneNumberCount, zoneStartPosX, zoneEndPosX, moveTime, delayTime);
         }
 
         foreach(ZoneNumber currentZoneNumber in currentZoneNumbers)
         {
-            currentZoneNumber.Progress(currentZoneNumberCount, currentZoneStartPosX, currentZoneEndPosX, moveTime);
+            currentZoneNumber.Progress(currentZoneNumberCount, currentZoneStartPosX, currentZoneEndPosX, moveTime, delayTime);
         }
     }
 }

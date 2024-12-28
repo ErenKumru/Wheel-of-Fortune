@@ -65,9 +65,9 @@ public class RewardController : MonoBehaviour
         rewardDisplayer.DisplayRewardCard(this, reward);
     }
 
-    public void RegenerateRewards()
+    public void Progress()
     {
-        CardGameManager.Instance.GenerateRewards();
+        CardGameManager.Instance.PrepareNextZone();
     }
 
     public Reward[] GetPossibleRewards()

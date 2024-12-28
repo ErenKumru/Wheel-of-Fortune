@@ -20,6 +20,12 @@ public class CardGameManager : Singleton<CardGameManager>
         GenerateRewards();
     }
 
+    public void PrepareNextZone()
+    {
+        zoneController.ProgressZone();
+        GenerateRewards();
+    }
+
     public void GenerateRewards()
     {
         rewardController.GenerateNewRewards();
@@ -34,13 +40,5 @@ public class CardGameManager : Singleton<CardGameManager>
     public void DisplayCollectedReward(int rewardIndex)
     {
         rewardController.DisplayReward(rewardIndex);
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.R))
-        {
-            GenerateRewards();
-        }
     }
 }

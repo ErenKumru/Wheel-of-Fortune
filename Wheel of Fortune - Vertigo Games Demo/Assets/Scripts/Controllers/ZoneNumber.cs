@@ -23,11 +23,11 @@ public class ZoneNumber : MonoBehaviour
         numberText.text = number.ToString();
     }
 
-    public virtual void Progress(int zoneNumberCount, float startPosX, float endPosX, float moveTime)
+    public virtual void Progress(int zoneNumberCount, float startPosX, float endPosX, float moveTime, float delay)
     {
         float width = rectTransform.rect.width;
 
-        rectTransform.DOAnchorPosX(rectTransform.anchoredPosition.x - width, moveTime).OnComplete(()=>
+        rectTransform.DOAnchorPosX(rectTransform.anchoredPosition.x - width, moveTime).SetDelay(delay).OnComplete(()=>
         {
             float endPosBoundary = endPosX - width / 2;
 
