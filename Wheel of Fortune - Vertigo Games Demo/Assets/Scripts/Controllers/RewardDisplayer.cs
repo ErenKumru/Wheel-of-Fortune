@@ -15,21 +15,58 @@ public class RewardDisplayer : MonoBehaviour
     [SerializeField] private float scaleTime = 0.5f, displayTime = 1f;
     [SerializeField] private Ease scaleEase = Ease.OutCubic;
 
-    public void DisplayRewardCard(RewardController rewardController)
+    [Header("Collection References")]
+    [SerializeField] private CollectionItem collectionItemPrefab;
+    [SerializeField] private RectTransform collectionItemsParent;
+    private Dictionary<int, CollectionItem> collectionItems = new Dictionary<int, CollectionItem>();
+
+    public void DisplayRewardCard(RewardController rewardController, RewardController.Reward reward)
     {
         rewardCardRectTransform.gameObject.SetActive(true);
 
         rewardCardRectTransform.DOScale(Vector2.one, scaleTime).From(Vector2.zero).SetEase(scaleEase).OnComplete(()=>
         {
-            BeginCardDisplayedProcesses(rewardController);
+            BeginCardDisplayedProcesses(rewardController, reward);
         });
     }
 
-    private void BeginCardDisplayedProcesses(RewardController rewardController)
+    private void BeginCardDisplayedProcesses(RewardController rewardController, RewardController.Reward reward)
     {
         rewardController.RegenerateRewards();
-        //TODO: Display reward in collection area (maybe jump/shoot it)
+        AddRewardToCollection(reward);
         HideRewardCard();
+    }
+
+    private void AddRewardToCollection(RewardController.Reward reward)
+    {
+        int rewardId = reward.rewardItem.id;
+
+        //Existing reward, update amount
+        if(collectionItems.ContainsKey(rewardId))
+        {
+            if(collectionItems.TryGetValue(rewardId, out CollectionItem collectionItem))
+            {
+                collectionItem.UpdateItemAmount(reward);
+            }
+            else
+            {
+                Debug.LogError("Something went wrong with collectionItems dictionary! Couldn't find element!");
+            }
+        }
+        //New reward, add to collection and display
+        else
+        {
+            CollectionItem collectionItem = Instantiate(collectionItemPrefab, collectionItemsParent);
+            collectionItem.transform.SetAsFirstSibling();
+            collectionItem.DisplayItem(reward);
+
+            bool addedToCollection = collectionItems.TryAdd(rewardId, collectionItem);
+
+            if(!addedToCollection)
+            {
+                Debug.LogError("Something went wrong with collectionItems dictionary! Couldn't add new element!");
+            }
+        }
     }
 
     private void HideRewardCard()

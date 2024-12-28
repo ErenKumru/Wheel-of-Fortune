@@ -62,7 +62,7 @@ public class RewardController : MonoBehaviour
     {
         Reward reward = possibleRewards[rewardIndex];
         rewardDisplayer.SetRewardCardData(reward);
-        rewardDisplayer.DisplayRewardCard(this);
+        rewardDisplayer.DisplayRewardCard(this, reward);
     }
 
     public void RegenerateRewards()
