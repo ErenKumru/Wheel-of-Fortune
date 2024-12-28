@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class CardGameManager : Singleton<CardGameManager>
 {
+    //TODO: Create Events to handle Button activation/deactivation according to current process
+    //Create functions to fire events
+
     [Header("Controller References")]
     public ZoneController zoneController;
     public WheelController wheelController;
