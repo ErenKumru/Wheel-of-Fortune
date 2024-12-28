@@ -82,7 +82,11 @@ public class RewardDisplayer : MonoBehaviour
         rewardCardNameText.text = reward.rewardItem.itemName;
         rewardCardIcon.sprite = reward.rewardItem.icon;
         ResizeCardIconWidth();
-        rewardCardAmountText.text = "x" + reward.amount;
+
+        if(reward.rewardItem.isBomb)
+            rewardCardAmountText.text = string.Empty;
+        else
+            rewardCardAmountText.text = "x" + reward.amount;
     }
 
     private void ResizeCardIconWidth()
