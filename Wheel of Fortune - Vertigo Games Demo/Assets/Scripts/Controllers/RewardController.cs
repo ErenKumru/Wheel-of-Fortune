@@ -16,20 +16,40 @@ public class RewardController : MonoBehaviour
         possibleRewards = new Reward[maxItemCount];
     }
 
-    public void GenerateNewRewards()
+    public void GenerateNewRewards(int currentZone, int safeZoneFrequency, int superZoneFrequency)
     {
         int maxItemCount = CardGameManager.Instance.wheelController.GetMaxItemCount();
 
-        for(int i = 0; i < maxItemCount; i++)
+        //Super Zone, generate special reward items
+        if(currentZone % superZoneFrequency == 0)
         {
-            int randomIndex = Random.Range(0, rewardLibrary.rewardItems.Count);
-            RewardItemSO rewardItem = rewardLibrary.rewardItems[randomIndex];
-            int amount = Random.Range(1, 100);
-            possibleRewards[i].SetData(rewardItem, amount);
+            GenerateRewards(rewardLibrary.specialRewardItems, maxItemCount, 1);
+            return;
         }
 
-        int bombIndex = Random.Range(0, maxItemCount);
-        possibleRewards[bombIndex].SetData(rewardLibrary.bomb, 1);
+        //Generate regular reward items
+        GenerateRewards(rewardLibrary.rewardItems, maxItemCount, currentZone);
+
+        //If Safe Zone, do not add bomb 
+        //If Regular Zone, add bomb
+        if(currentZone % safeZoneFrequency != 0)
+        {
+            int bombIndex = Random.Range(0, maxItemCount);
+            possibleRewards[bombIndex].SetData(rewardLibrary.bomb, 1);
+        }
+    }
+
+    private void GenerateRewards(List<RewardItemSO> rewardItems, int maxItemCount, int zoneMultiplier)
+    {
+        for(int i = 0; i < maxItemCount; i++)
+        {
+            int randomIndex = Random.Range(0, rewardItems.Count);
+            RewardItemSO rewardItem = rewardItems[randomIndex];
+            int zoneMinAmount = zoneMultiplier * rewardItem.minAmount;
+            int zoneMaxAmount = zoneMultiplier * rewardItem.maxAmount;
+            int amount = Random.Range(zoneMinAmount, zoneMaxAmount);
+            possibleRewards[i].SetData(rewardItem, amount);
+        }
     }
 
     public void SetCollectedReward(int rewardIndex)

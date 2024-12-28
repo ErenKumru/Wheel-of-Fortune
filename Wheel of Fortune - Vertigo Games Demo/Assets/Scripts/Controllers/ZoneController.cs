@@ -24,6 +24,8 @@ public class ZoneController : MonoBehaviour
     [Header("Zone Values")]
     [SerializeField] private float moveTime = 1f;
     [SerializeField] private float delayTime = 1f;
+    [SerializeField] private int safeZoneFrequency = 5;
+    [SerializeField] private int superZoneFrequency = 30;
 
     public void Initialize()
     {
@@ -117,5 +119,20 @@ public class ZoneController : MonoBehaviour
         {
             currentZoneNumber.Progress(currentZoneNumberCount, currentZoneStartPosX, currentZoneEndPosX, moveTime, delayTime);
         }
+    }
+
+    public int GetCurrentZone()
+    {
+        return currentZone;
+    }
+
+    public int GetSafeZoneFrequency()
+    {
+        return safeZoneFrequency;
+    }
+
+    public int GetSuperZoneFrequency()
+    {
+        return superZoneFrequency;
     }
 }

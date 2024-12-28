@@ -28,7 +28,11 @@ public class CardGameManager : Singleton<CardGameManager>
 
     public void GenerateRewards()
     {
-        rewardController.GenerateNewRewards();
+        int currentZone = zoneController.GetCurrentZone();
+        int safeZoneFrequency = zoneController.GetSafeZoneFrequency();
+        int superZoneFrequency = zoneController.GetSuperZoneFrequency();
+
+        rewardController.GenerateNewRewards(currentZone, safeZoneFrequency, superZoneFrequency);
         wheelController.DisplayNewRewards(rewardController.GetPossibleRewards());
     }
 

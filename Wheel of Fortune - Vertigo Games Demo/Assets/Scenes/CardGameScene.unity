@@ -2225,7 +2225,9 @@ MonoBehaviour:
   currentZoneNumberPrefab: {fileID: 2201855305096909626, guid: 3689c617eb00c6443a89779793c50415, type: 3}
   currentZoneNumberCount: 3
   moveTime: 1
-  progressDelayTime: 1
+  delayTime: 1
+  safeZoneFrequency: 5
+  superZoneFrequency: 30
 --- !u!114 &953207990
 MonoBehaviour:
   m_ObjectHideFlags: 0
