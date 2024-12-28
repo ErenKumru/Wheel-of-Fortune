@@ -15,6 +15,11 @@ public class CardGameManager : Singleton<CardGameManager>
         rewardController.Initialize();
     }
 
+    private void Start()
+    {
+        GenerateRewards();
+    }
+
     public void GenerateRewards()
     {
         rewardController.GenerateNewRewards();
