@@ -18,15 +18,9 @@ public class WheelController : MonoBehaviour
     [Header("Wheel Slot References")]
     [SerializeField] private WheelRewardSlot[] wheelRewardSlots;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            RotateWheel();
-        }
-    }
-
-    private void RotateWheel()
+    //TODO: Refactor => this is doing multiple things -> not only rotating but also selecting the reward, calculating rotation amount etc.
+    //Name functions to something like "SelectReward", "CalculateRotation", "SpinWheel"
+    public void RotateWheel()
     {
         //Select index
         int selectionIndex = Random.Range(0, maxItemCount);
