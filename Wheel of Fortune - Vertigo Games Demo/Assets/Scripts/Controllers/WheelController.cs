@@ -31,6 +31,9 @@ public class WheelController : MonoBehaviour
         //Select index
         int selectionIndex = Random.Range(0, maxItemCount);
 
+        //Select Reward
+        CardGameManager.Instance.CollectReward(selectionIndex);
+
         //Calculate rotation amount
         float remainingRotationRatio = 1f - lastSelectionIndex / (float)maxItemCount;
         float selectionRotationRatio = selectionIndex / (float)maxItemCount;
@@ -43,7 +46,10 @@ public class WheelController : MonoBehaviour
         lastSelectionIndex = selectionIndex;
 
         //Rotate wheel
-        wheelImage.rectTransform.DOLocalRotate(rotation, rotationTime, RotateMode.FastBeyond360).SetEase(easeMode);
+        wheelImage.rectTransform.DOLocalRotate(rotation, rotationTime, RotateMode.FastBeyond360).SetEase(easeMode).OnComplete(()=>
+        {
+            CardGameManager.Instance.DisplayCollectedReward(selectionIndex);
+        });
     }
 
     public void DisplayNewRewards(RewardController.Reward[] possibleRewards)

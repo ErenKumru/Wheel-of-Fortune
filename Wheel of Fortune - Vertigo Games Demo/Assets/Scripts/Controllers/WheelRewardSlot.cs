@@ -12,10 +12,17 @@ public class WheelRewardSlot : MonoBehaviour
     public void SetSlot(Sprite icon, int amount)
     {
         rewardIcon.sprite = icon;
+        ResizeSlotIconHeight();
 
         if(amount > 1)
             rewardAmountText.text = "x" + amount;
         else
             rewardAmountText.text = string.Empty;
+    }
+
+    private void ResizeSlotIconHeight()
+    {
+        Vector2 sizeDelta = rewardIcon.rectTransform.sizeDelta;
+        rewardIcon.rectTransform.sizeDelta = sizeDelta.ResizeHeightByTextureSize(rewardIcon.sprite.texture);
     }
 }

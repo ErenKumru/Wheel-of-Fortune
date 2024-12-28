@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using UnityEngine; 
 
 public class RewardController : MonoBehaviour
 {
     [SerializeField] private RewardLibrarySO rewardLibrary;
+    [SerializeField] private RewardDisplayer rewardDisplayer;
 
     private Reward[] possibleRewards;
+    private Dictionary<int, Reward> collectedRewards = new Dictionary<int, Reward>();
 
     public void Initialize()
     {
@@ -28,6 +30,39 @@ public class RewardController : MonoBehaviour
 
         int bombIndex = Random.Range(0, maxItemCount);
         possibleRewards[bombIndex].SetData(rewardLibrary.bomb, 1);
+    }
+
+    public void SetCollectedReward(int rewardIndex)
+    {
+        Reward reward = possibleRewards[rewardIndex];
+        int rewardId = reward.rewardItem.id;
+        
+        //Existing reward, increase the amount
+        if(collectedRewards.ContainsKey(rewardId))
+        {
+            if(collectedRewards.TryGetValue(rewardId, out Reward collectedReward))
+            {
+                collectedReward.amount += reward.amount;
+                collectedRewards[rewardId] = collectedReward;
+            }
+        }
+        //New reward, add to collection
+        else
+        {
+            bool success = collectedRewards.TryAdd(rewardId, reward);
+
+            if(!success)
+            {
+                Debug.LogError("Something went wrong with collectedRewards dictionary! Couldn't add new element!");
+            }
+        }
+    }
+
+    public void DisplayReward(int rewardIndex)
+    {
+        Reward reward = possibleRewards[rewardIndex];
+        rewardDisplayer.SetCardData(reward);
+        rewardDisplayer.DisplayRewardCard();
     }
 
     public Reward[] GetPossibleRewards()

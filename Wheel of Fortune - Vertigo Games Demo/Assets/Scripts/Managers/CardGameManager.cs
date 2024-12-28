@@ -21,6 +21,16 @@ public class CardGameManager : Singleton<CardGameManager>
         wheelController.DisplayNewRewards(rewardController.GetPossibleRewards());
     }
 
+    public void CollectReward(int rewardIndex)
+    {
+        rewardController.SetCollectedReward(rewardIndex);
+    }
+
+    public void DisplayCollectedReward(int rewardIndex)
+    {
+        rewardController.DisplayReward(rewardIndex);
+    }
+
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.R))
