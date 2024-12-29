@@ -10,10 +10,11 @@ public class RewardController : MonoBehaviour
     private Reward[] possibleRewards;
     private Dictionary<int, Reward> collectedRewards = new Dictionary<int, Reward>();
 
-    public void Initialize()
+    public void Initialize(int reviveCost)
     {
         int maxItemCount = CardGameManager.Instance.wheelController.GetMaxItemCount();
         possibleRewards = new Reward[maxItemCount];
+        rewardDisplayer.SetReviveCostText(reviveCost);
     }
 
     public void GenerateNewRewards(int currentZone, int safeZoneFrequency, int superZoneFrequency)
@@ -56,6 +57,10 @@ public class RewardController : MonoBehaviour
     {
         Reward reward = possibleRewards[rewardIndex];
         int rewardId = reward.rewardItem.id;
+
+        //If reward is bomb, nothing to collect
+        if(reward.rewardItem.isBomb)
+            return;
         
         //Existing reward, increase the amount
         if(collectedRewards.ContainsKey(rewardId))
@@ -81,6 +86,14 @@ public class RewardController : MonoBehaviour
     public void DisplayReward(int rewardIndex)
     {
         Reward reward = possibleRewards[rewardIndex];
+
+        //If reward is bomb, display bomb hit panel
+        if(reward.rewardItem.isBomb)
+        {
+            rewardDisplayer.DisplayBombHitPanel();
+            return;
+        }
+
         rewardDisplayer.SetRewardCardData(reward);
         rewardDisplayer.DisplayRewardCard(this, reward);
     }
@@ -88,6 +101,17 @@ public class RewardController : MonoBehaviour
     public void Progress()
     {
         CardGameManager.Instance.PrepareNextZone();
+    }
+
+    public void ClearCollectedRewards()
+    {
+        rewardDisplayer.ClearCollectionItems();
+        collectedRewards.Clear();
+    }
+
+    public void HideBombPanel()
+    {
+        rewardDisplayer.HideBombHitPanel();
     }
 
     public Reward[] GetPossibleRewards()

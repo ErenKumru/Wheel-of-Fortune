@@ -121,6 +121,22 @@ public class ZoneController : MonoBehaviour
         }
     }
 
+    public void RestartZone()
+    {
+        currentZone = 1;
+        ResetZoneNumbers(zoneNumbers);
+        ResetZoneNumbers(currentZoneNumbers);
+    }
+
+    private void ResetZoneNumbers(List<ZoneNumber> numberList)
+    {
+        for(int i = 0; i < numberList.Count; i++)
+        {
+            ZoneNumber zoneNumber = numberList[i];
+            zoneNumber.Initialize(i);
+        }
+    }
+
     public int GetCurrentZone()
     {
         return currentZone;

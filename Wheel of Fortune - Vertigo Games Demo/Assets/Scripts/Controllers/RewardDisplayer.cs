@@ -20,6 +20,10 @@ public class RewardDisplayer : MonoBehaviour
     [SerializeField] private RectTransform collectionItemsParent;
     private Dictionary<int, CollectionItem> collectionItems = new Dictionary<int, CollectionItem>();
 
+    [Header("Bomb Panel References")]
+    [SerializeField] private RectTransform bombPanelRectTransform;
+    [SerializeField] private TMP_Text reviveCostText;
+
     public void DisplayRewardCard(RewardController rewardController, RewardController.Reward reward)
     {
         rewardCardRectTransform.gameObject.SetActive(true);
@@ -87,6 +91,36 @@ public class RewardDisplayer : MonoBehaviour
             rewardCardAmountText.text = string.Empty;
         else
             rewardCardAmountText.text = "x" + reward.amount;
+    }
+
+    public void DisplayBombHitPanel()
+    {
+        bombPanelRectTransform.gameObject.SetActive(true);
+        bombPanelRectTransform.DOScale(Vector2.one, scaleTime).From(Vector2.zero).SetEase(scaleEase);
+    }
+
+    public void HideBombHitPanel()
+    {
+        bombPanelRectTransform.DOScale(Vector2.zero, scaleTime).SetEase(scaleEase).OnComplete(() =>
+        {
+            bombPanelRectTransform.gameObject.SetActive(false);
+        });
+    }
+
+    public void ClearCollectionItems()
+    {
+        foreach(KeyValuePair<int, CollectionItem> keyValuePair in collectionItems)
+        {
+            CollectionItem collectionItem = keyValuePair.Value;
+            Destroy(collectionItem.gameObject);
+        }
+
+        collectionItems.Clear();
+    }
+
+    public void SetReviveCostText(int cost)
+    {
+        reviveCostText.text = cost.ToString();
     }
 
     private void ResizeCardIconWidth()

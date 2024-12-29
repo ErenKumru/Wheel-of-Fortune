@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ValidatedButton : MonoBehaviour
 {
-    [SerializeField] private Button button;
+    [SerializeField] protected Button button;
 
     protected virtual void AddButtonClickAction(UnityAction action)
     {

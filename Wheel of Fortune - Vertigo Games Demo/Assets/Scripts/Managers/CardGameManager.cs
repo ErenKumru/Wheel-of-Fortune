@@ -13,15 +13,37 @@ public class CardGameManager : Singleton<CardGameManager>
     public WheelController wheelController;
     public RewardController rewardController;
 
+    //We can use a CurrencyManager but it is really not necessary for this simple of a currency management
+    //If it gets more complex/complicated we can easily create a manager and move currency management to there
+    [Header("Currency Values")]
+    [SerializeField] private int currentCurrency = 100;
+    [SerializeField] private int reviveCost = 25;
+    private const string currencySaveID = "CURRENCY";
+
     protected override void AwakeSingleton()
     {
-        zoneController.Initialize();
-        rewardController.Initialize();
+        Initialize();
     }
 
     private void Start()
     {
         GenerateRewards();
+    }
+
+    private void Initialize()
+    {
+        LoadCurrency();
+        zoneController.Initialize();
+        rewardController.Initialize(reviveCost);
+    }
+
+    private void LoadCurrency()
+    {
+        if(PlayerPrefs.HasKey(currencySaveID))
+        {
+            currentCurrency = PlayerPrefs.GetInt(currencySaveID);
+            //Display on UI via UIManager
+        }
     }
 
     public void PrepareNextZone()
@@ -50,6 +72,14 @@ public class CardGameManager : Singleton<CardGameManager>
     public void DisplayCollectedReward(int rewardIndex)
     {
         rewardController.DisplayReward(rewardIndex);
+    }
+
+    public void Restart()
+    {
+        zoneController.RestartZone();
+        rewardController.ClearCollectedRewards();
+        GenerateRewards();
+        rewardController.HideBombPanel();
     }
 
     public void TriggerOnSpinWheel()
