@@ -3513,7 +3513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 66957.58}
+  m_AnchoredPosition: {x: 0, y: 115015.086}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &920457310
@@ -3665,12 +3665,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wheelImage: {fileID: 1478090804}
+  wheelIndicator: {fileID: 2136310404}
   lastSelectionIndex: 0
   maxItemCount: 8
   minRotation: 4
   maxRotation: 12
   rotationTime: 2
   easeMode: 12
+  wheelVisuals:
+    regularWheel: {fileID: 21300000, guid: 793c24822b44bae4eafc4fa60cffc147, type: 3}
+    regularIndicator: {fileID: 21300000, guid: fb938b8453543ce4396b84549cb3201b, type: 3}
+    safeWheel: {fileID: 21300000, guid: 0810bff4872f4c34ebb01d3aa3effd24, type: 3}
+    safeIndicator: {fileID: 21300000, guid: d47ed03c727bb4c499a5f322bf097318, type: 3}
+    superWheel: {fileID: 21300000, guid: 93a6b0da72b5b994586bbe2670cd34ae, type: 3}
+    superIndicator: {fileID: 21300000, guid: eb94635fddfdb124abb7d7b6c6ba3de8, type: 3}
   wheelRewardSlots:
   - {fileID: 971258044}
   - {fileID: 1066755435}

@@ -62,6 +62,7 @@ public class CardGameManager : Singleton<CardGameManager>
 
         rewardController.GenerateNewRewards(currentZone, safeZoneFrequency, superZoneFrequency);
         wheelController.DisplayNewRewards(rewardController.GetPossibleRewards());
+        wheelController.SetWheelVisuals(currentZone, safeZoneFrequency, superZoneFrequency);
 
         TriggerOnZonePrepared();
     }

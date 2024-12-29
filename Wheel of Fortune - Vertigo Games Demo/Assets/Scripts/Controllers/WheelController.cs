@@ -1,19 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using System.Linq;
+using Random = UnityEngine.Random;
 
 public class WheelController : MonoBehaviour
 {
     [Header("Wheel References")]
     [SerializeField] private Image wheelImage;
+    [SerializeField] private Image wheelIndicator;
     [SerializeField] private int lastSelectionIndex = 0;
     [SerializeField] private int maxItemCount = 8;
     [SerializeField] private int minRotation = 4, maxRotation = 12;
     [SerializeField] private float rotationTime = 2f;
     [SerializeField] private Ease easeMode = Ease.OutQuart;
+    [SerializeField] private WheelVisuals wheelVisuals;
 
     [Header("Wheel Slot References")]
     [SerializeField] private WheelRewardSlot[] wheelRewardSlots;
@@ -67,8 +70,38 @@ public class WheelController : MonoBehaviour
         }
     }
 
+    public void SetWheelVisuals(int currentZone, int safeZoneFrequency, int superZoneFrequency)
+    {
+        if(currentZone % superZoneFrequency == 0)
+        {
+            wheelImage.sprite = wheelVisuals.superWheel;
+            wheelIndicator.sprite = wheelVisuals.superIndicator;
+        }
+        else if(currentZone % safeZoneFrequency == 0)
+        {
+            wheelImage.sprite = wheelVisuals.safeWheel;
+            wheelIndicator.sprite = wheelVisuals.safeIndicator;
+        }
+        else
+        {
+            wheelImage.sprite = wheelVisuals.regularWheel;
+            wheelIndicator.sprite = wheelVisuals.regularIndicator;
+        }
+    }
+
     public int GetMaxItemCount()
     {
         return maxItemCount;
+    }
+
+    [Serializable]
+    public struct WheelVisuals
+    {
+        public Sprite regularWheel;
+        public Sprite regularIndicator;
+        public Sprite safeWheel;
+        public Sprite safeIndicator;
+        public Sprite superWheel;
+        public Sprite superIndicator;
     }
 }
