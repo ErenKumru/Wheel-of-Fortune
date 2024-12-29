@@ -18,29 +18,41 @@ public class WheelController : MonoBehaviour
     [Header("Wheel Slot References")]
     [SerializeField] private WheelRewardSlot[] wheelRewardSlots;
 
-    //TODO: Refactor => this is doing multiple things -> not only rotating but also selecting the reward, calculating rotation amount etc.
-    //Name functions to something like "SelectReward", "CalculateRotation", "SpinWheel"
-    public void RotateWheel()
+    public void SelectReward()
     {
         //Select index
         int selectionIndex = Random.Range(0, maxItemCount);
 
-        //Select Reward
+        //Collect Reward
         CardGameManager.Instance.CollectReward(selectionIndex);
 
         //Calculate rotation amount
+        Vector3 rotation = CalculateWheelRotation(selectionIndex);
+
+        //Update last selection index   
+        lastSelectionIndex = selectionIndex;
+
+        //Spin wheel
+        SpinWheel(selectionIndex, rotation);
+
+        //Notify wheel spinned
+        CardGameManager.Instance.TriggerOnSpinWheel();
+    }
+
+    private Vector3 CalculateWheelRotation(int selectionIndex)
+    {
         float remainingRotationRatio = 1f - lastSelectionIndex / (float)maxItemCount;
         float selectionRotationRatio = selectionIndex / (float)maxItemCount;
         int randomFullRotation = Random.Range(minRotation, maxRotation + 1);
         float totalRotationAmount = (remainingRotationRatio + selectionRotationRatio + randomFullRotation) * 360;
         Vector3 rotation = wheelImage.rectTransform.localRotation.eulerAngles;
         rotation.z += totalRotationAmount;
+        return rotation;
+    }
 
-        //Update last selection index   
-        lastSelectionIndex = selectionIndex;
-
-        //Rotate wheel
-        wheelImage.rectTransform.DOLocalRotate(rotation, rotationTime, RotateMode.FastBeyond360).SetEase(easeMode).OnComplete(()=>
+    private void SpinWheel(int selectionIndex, Vector3 rotation)
+    {
+        wheelImage.rectTransform.DOLocalRotate(rotation, rotationTime, RotateMode.FastBeyond360).SetEase(easeMode).OnComplete(() =>
         {
             CardGameManager.Instance.DisplayCollectedReward(selectionIndex);
         });
