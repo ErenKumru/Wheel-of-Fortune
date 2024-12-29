@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CardGameManager : Singleton<CardGameManager>
@@ -37,15 +35,6 @@ public class CardGameManager : Singleton<CardGameManager>
     {
         zoneController.Initialize();
         rewardController.Initialize(reviveCost);
-    }
-
-    private void LoadCurrency()
-    {
-        if(PlayerPrefs.HasKey(currencySaveID))
-        {
-            currentCurrency = PlayerPrefs.GetInt(currencySaveID);
-            UIManager.Instance.UpdateCurrencyText(currentCurrency);
-        }
     }
 
     public void PrepareNextZone()
@@ -101,6 +90,22 @@ public class CardGameManager : Singleton<CardGameManager>
         UIManager.Instance.DisplayCurrencyWarning();
     }
 
+    public bool CanExit()
+    {
+        int currentZone = zoneController.GetCurrentZone();
+        int safeZoneFrequency = zoneController.GetSafeZoneFrequency();
+        int superZoneFrequency = zoneController.GetSuperZoneFrequency();
+
+        return canExit && (currentZone == 1 || currentZone % safeZoneFrequency == 0 || currentZone % superZoneFrequency == 0);
+    }
+
+    public void ExitGame()
+    {
+        AddCurrency();
+        Restart();
+    }
+
+    #region Currency Management
     public void ResetCurrency()
     {
         currentCurrency = 100;
@@ -116,25 +121,20 @@ public class CardGameManager : Singleton<CardGameManager>
         SaveCurrency();
     }
 
+    private void LoadCurrency()
+    {
+        if (PlayerPrefs.HasKey(currencySaveID))
+        {
+            currentCurrency = PlayerPrefs.GetInt(currencySaveID);
+            UIManager.Instance.UpdateCurrencyText(currentCurrency);
+        }
+    }
+
     public void SaveCurrency()
     {
         PlayerPrefs.SetInt(currencySaveID, currentCurrency);
     }
-
-    public bool CanExit()
-    {
-        int currentZone = zoneController.GetCurrentZone();
-        int safeZoneFrequency = zoneController.GetSafeZoneFrequency();
-        int superZoneFrequency = zoneController.GetSuperZoneFrequency();
-
-        return canExit && (currentZone == 1 || currentZone % safeZoneFrequency == 0 || currentZone % superZoneFrequency == 0);
-    }
-
-    public void ExitGame()
-    {
-        AddCurrency();
-        Restart();
-    }
+    #endregion
 
     public void TriggerOnSpinWheel()
     {

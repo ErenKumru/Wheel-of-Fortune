@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -86,11 +85,7 @@ public class RewardDisplayer : MonoBehaviour
         rewardCardNameText.text = reward.rewardItem.itemName;
         rewardCardIcon.sprite = reward.rewardItem.icon;
         ResizeCardIconWidth();
-
-        if(reward.rewardItem.isBomb)
-            rewardCardAmountText.text = string.Empty;
-        else
-            rewardCardAmountText.text = "x" + reward.amount;
+        rewardCardAmountText.text = "x" + reward.amount;
     }
 
     public void DisplayBombHitPanel()

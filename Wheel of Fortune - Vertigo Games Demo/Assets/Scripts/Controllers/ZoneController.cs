@@ -1,9 +1,6 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using DG.Tweening;
 
 public class ZoneController : MonoBehaviour
 {
@@ -71,30 +68,6 @@ public class ZoneController : MonoBehaviour
     {
         return numberWidth * (numberCount - 1) / 2;
     }
-
-    //private void InitializeZoneNumbers()
-    //{
-    //    zoneNumbers = new List<ZoneNumber>(zoneNumberCount);
-
-    //    for(int i = 0; i < zoneNumberCount; i++)
-    //    {
-    //        ZoneNumber zoneNumber = Instantiate(zoneNumberPrefab, zonePanelRectTransform);
-    //        zoneNumber.Initialize(i);
-    //        zoneNumbers.Add(zoneNumber);
-    //    }
-    //}
-
-    //private void InitializeCurrentZoneNumbers()
-    //{
-    //    currentZoneNumbers = new List<ZoneNumber>(currentZoneNumberCount);
-
-    //    for(int i = 0; i < currentZoneNumberCount; i++)
-    //    {
-    //        CurrentZoneNumber currentZoneNumber = Instantiate(currentZoneNumberPrefab, currentZoneFrameRectTransform);
-    //        currentZoneNumber.Initialize(i);
-    //        currentZoneNumbers.Add(currentZoneNumber);
-    //    }
-    //}
 
     private void InitializeZoneNumbers(ref List<ZoneNumber> numberList, int numberCount, ZoneNumber numberPrefab, RectTransform parent)
     {
