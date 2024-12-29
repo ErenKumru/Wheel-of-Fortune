@@ -82,6 +82,21 @@ public class CardGameManager : Singleton<CardGameManager>
         rewardController.HideBombPanel();
     }
 
+    public void Revive()
+    {
+        //Enough currency
+        if(currentCurrency >= reviveCost)
+        {
+            currentCurrency -= reviveCost;
+            rewardController.HideBombPanel();
+            TriggerOnZonePrepared();
+            return;
+        }
+
+        //Not enough currency
+        UIManager.Instance.DisplayCurrencyWarning();
+    }
+
     public void TriggerOnSpinWheel()
     {
         OnSpinWheel?.Invoke();
