@@ -8,12 +8,17 @@ using DG.Tweening;
 public class ZoneNumber : MonoBehaviour
 {
     public RectTransform rectTransform;
-    [SerializeField] private TMP_Text numberText;
+    [SerializeField] protected TMP_Text numberText;
 
-    private int number;
+    protected ZoneController zoneController;
+    protected int number;
 
-    public virtual void Initialize(int index)
+    public virtual void Initialize(ZoneController controller, int index)
     {
+        //Set zoneController if not already initialized
+        if(zoneController == null)
+            zoneController = controller;
+
         //Kill any tweening before we set position
         rectTransform.DOKill();
 
@@ -24,6 +29,7 @@ public class ZoneNumber : MonoBehaviour
         //Set initial number
         number = index + 1;
         numberText.text = number.ToString();
+        SetNumberColor();
     }
 
     public virtual void Progress(int zoneNumberCount, float startPosX, float endPosX, float moveTime, float delay)
@@ -47,5 +53,20 @@ public class ZoneNumber : MonoBehaviour
         //Update number
         number += zoneNumberCount;
         numberText.text = number.ToString();
+        SetNumberColor();
+    }
+
+    protected virtual void SetNumberColor()
+    {
+        ZoneController.ZoneColors zoneColors = zoneController.GetZoneColors();
+        int superZoneFrequency = zoneController.GetSuperZoneFrequency();
+        int safeZoneFrequency = zoneController.GetSafeZoneFrequency();
+
+        if(number % superZoneFrequency == 0)
+            numberText.color = zoneColors.superZoneNumberColor;
+        else if(number % safeZoneFrequency == 0)
+            numberText.color = zoneColors.safeZoneNumberColor;
+        else
+            numberText.color = zoneColors.zoneNumberColor;
     }
 }

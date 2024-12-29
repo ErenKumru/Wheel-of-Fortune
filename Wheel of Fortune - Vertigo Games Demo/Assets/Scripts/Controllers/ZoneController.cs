@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -26,6 +27,7 @@ public class ZoneController : MonoBehaviour
     [SerializeField] private float delayTime = 1f;
     [SerializeField] private int safeZoneFrequency = 5;
     [SerializeField] private int superZoneFrequency = 30;
+    [SerializeField] private ZoneColors zoneColors;
 
     public void Initialize()
     {
@@ -101,7 +103,7 @@ public class ZoneController : MonoBehaviour
         for(int i = 0; i < numberCount; i++)
         {
             ZoneNumber zoneNumber = Instantiate(numberPrefab, parent);
-            zoneNumber.Initialize(i);
+            zoneNumber.Initialize(this, i);
             numberList.Add(zoneNumber);
         }
     }
@@ -133,8 +135,13 @@ public class ZoneController : MonoBehaviour
         for(int i = 0; i < numberList.Count; i++)
         {
             ZoneNumber zoneNumber = numberList[i];
-            zoneNumber.Initialize(i);
+            zoneNumber.Initialize(this, i);
         }
+    }
+
+    public ZoneColors GetZoneColors()
+    {
+        return zoneColors;
     }
 
     public int GetCurrentZone()
@@ -150,5 +157,14 @@ public class ZoneController : MonoBehaviour
     public int GetSuperZoneFrequency()
     {
         return superZoneFrequency;
+    }
+
+    [Serializable]
+    public struct ZoneColors
+    {
+        public Color zoneNumberColor;
+        public Color currentZoneNumberColor;
+        public Color safeZoneNumberColor;
+        public Color superZoneNumberColor;
     }
 }

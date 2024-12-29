@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6339700741970393927}
   - component: {fileID: 1178344713}
   m_Layer: 5
-  m_Name: Zone Number
+  m_Name: zone_number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

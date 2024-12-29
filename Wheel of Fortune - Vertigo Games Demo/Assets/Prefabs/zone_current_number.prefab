@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3436496406168815790}
   - component: {fileID: 2201855305096909626}
   m_Layer: 5
-  m_Name: Zone Current Number
+  m_Name: zone_current_number
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

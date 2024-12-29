@@ -3513,7 +3513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 17792}
+  m_AnchoredPosition: {x: 0, y: 66957.58}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &920457310
@@ -3717,6 +3717,11 @@ MonoBehaviour:
   delayTime: 1
   safeZoneFrequency: 5
   superZoneFrequency: 30
+  zoneColors:
+    zoneNumberColor: {r: 1, g: 1, b: 1, a: 1}
+    currentZoneNumberColor: {r: 0, g: 0, b: 0, a: 1}
+    safeZoneNumberColor: {r: 0, g: 0.8, b: 0, a: 1}
+    superZoneNumberColor: {r: 1, g: 0.84313726, b: 0, a: 1}
 --- !u!114 &953207990
 MonoBehaviour:
   m_ObjectHideFlags: 0
