@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 107377323}
   - component: {fileID: 107377322}
   m_Layer: 5
-  m_Name: ui_game_area_currency_value
+  m_Name: ui_game_text_currency_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -423,7 +423,7 @@ GameObject:
   - component: {fileID: 128211369}
   - component: {fileID: 128211368}
   m_Layer: 5
-  m_Name: ui_game_area_wheel_reward_slot_value
+  m_Name: ui_game_text_wheel_reward_slot_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1030,7 +1030,7 @@ GameObject:
   - component: {fileID: 448446203}
   - component: {fileID: 448446202}
   m_Layer: 5
-  m_Name: ui_game_area_wheel_reward_slot_value
+  m_Name: ui_game_text_wheel_reward_slot_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1321,7 +1321,7 @@ GameObject:
   - component: {fileID: 507246732}
   - component: {fileID: 507246731}
   m_Layer: 5
-  m_Name: ui_game_area_wheel_reward_slot_value
+  m_Name: ui_game_text_wheel_reward_slot_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2056,7 +2056,7 @@ GameObject:
   - component: {fileID: 648981362}
   - component: {fileID: 648981361}
   m_Layer: 5
-  m_Name: ui_game_area_wheel_reward_slot_value
+  m_Name: ui_game_text_wheel_reward_slot_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2859,7 +2859,7 @@ GameObject:
   - component: {fileID: 786318492}
   - component: {fileID: 786318491}
   m_Layer: 5
-  m_Name: ui_game_area_wheel_reward_slot_value
+  m_Name: ui_game_text_wheel_reward_slot_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3513,7 +3513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00008239231}
+  m_AnchoredPosition: {x: 0, y: 0.00067734707}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &920457310
@@ -4677,7 +4677,7 @@ GameObject:
   - component: {fileID: 1391504695}
   - component: {fileID: 1391504694}
   m_Layer: 5
-  m_Name: ui_game_area_wheel_reward_slot_value
+  m_Name: ui_game_text_wheel_reward_slot_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5629,7 +5629,7 @@ GameObject:
   - component: {fileID: 1591764063}
   - component: {fileID: 1591764062}
   m_Layer: 5
-  m_Name: ui_game_area_wheel_reward_slot_value
+  m_Name: ui_game_text_wheel_reward_slot_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6612,7 +6612,7 @@ GameObject:
   - component: {fileID: 1867588545}
   - component: {fileID: 1867588544}
   m_Layer: 5
-  m_Name: ui_game_area_currency_icon
+  m_Name: ui_game_image_currency_icon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6741,7 +6741,7 @@ GameObject:
   - component: {fileID: 1910434967}
   - component: {fileID: 1910434966}
   m_Layer: 5
-  m_Name: ui_game_area_wheel_reward_slot_value
+  m_Name: ui_game_text_wheel_reward_slot_value
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
