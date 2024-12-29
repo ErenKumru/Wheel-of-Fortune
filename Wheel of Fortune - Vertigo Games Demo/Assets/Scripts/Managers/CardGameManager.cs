@@ -126,7 +126,7 @@ public class CardGameManager : Singleton<CardGameManager>
         int safeZoneFrequency = zoneController.GetSafeZoneFrequency();
         int superZoneFrequency = zoneController.GetSuperZoneFrequency();
 
-        return canExit && (currentZone % safeZoneFrequency == 0 || currentZone % superZoneFrequency == 0);
+        return canExit && (currentZone == 1 || currentZone % safeZoneFrequency == 0 || currentZone % superZoneFrequency == 0);
     }
 
     public void ExitGame()
