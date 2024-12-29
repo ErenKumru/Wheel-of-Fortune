@@ -24,7 +24,7 @@ public class ExitButton : ValidatedButton
 
     private void ExitGame()
     {
-        CardGameManager.Instance.AddCurrency();
+        CardGameManager.Instance.ExitGame();
         UIManager.Instance.OpenMenuCanvas();
     }
 }

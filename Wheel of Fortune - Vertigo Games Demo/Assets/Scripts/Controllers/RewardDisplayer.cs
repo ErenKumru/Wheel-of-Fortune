@@ -101,6 +101,10 @@ public class RewardDisplayer : MonoBehaviour
 
     public void HideBombHitPanel()
     {
+        //If not active no need to animate
+        if(!bombPanelRectTransform.gameObject.activeInHierarchy)
+            return;
+
         bombPanelRectTransform.DOScale(Vector2.zero, scaleTime).SetEase(scaleEase).OnComplete(() =>
         {
             bombPanelRectTransform.gameObject.SetActive(false);

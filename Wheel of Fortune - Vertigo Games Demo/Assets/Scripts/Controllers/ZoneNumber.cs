@@ -14,6 +14,9 @@ public class ZoneNumber : MonoBehaviour
 
     public virtual void Initialize(int index)
     {
+        //Kill any tweening before we set position
+        rectTransform.DOKill();
+
         //Set initial position
         Vector2 anchoredPos = rectTransform.anchoredPosition;
         rectTransform.anchoredPosition = anchoredPos.SetXValue(rectTransform.rect.width * index);

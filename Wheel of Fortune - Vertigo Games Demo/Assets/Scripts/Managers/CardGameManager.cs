@@ -107,7 +107,7 @@ public class CardGameManager : Singleton<CardGameManager>
         UIManager.Instance.UpdateCurrencyText(currentCurrency);
     }
 
-    public void AddCurrency()
+    private void AddCurrency()
     {
         int amount = rewardController.GetCollectedCurrencyAmount();
         currentCurrency += amount;
@@ -127,6 +127,12 @@ public class CardGameManager : Singleton<CardGameManager>
         int superZoneFrequency = zoneController.GetSuperZoneFrequency();
 
         return canExit && (currentZone % safeZoneFrequency == 0 || currentZone % superZoneFrequency == 0);
+    }
+
+    public void ExitGame()
+    {
+        AddCurrency();
+        Restart();
     }
 
     public void TriggerOnSpinWheel()
