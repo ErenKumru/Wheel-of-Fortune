@@ -13,6 +13,16 @@ public class ValidatedButton : MonoBehaviour
         button.onClick.AddListener(action);
     }
 
+    protected virtual void ActivateButton()
+    {
+        gameObject.SetActive(true);
+    }
+
+    protected virtual void DeactivateButton()
+    {
+        gameObject.SetActive(false);
+    }
+
     protected virtual void OnDestroy()
     {
         button.onClick.RemoveAllListeners();

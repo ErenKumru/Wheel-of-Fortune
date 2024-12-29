@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CardGameManager : Singleton<CardGameManager>
 {
-    //TODO: Create Events to handle Button activation/deactivation according to current process
-    //Create functions to fire events
+    public static event Action OnSpinWheel;
+    public static event Action OnZonePrepared;
 
     [Header("Controller References")]
     public ZoneController zoneController;
@@ -37,6 +38,8 @@ public class CardGameManager : Singleton<CardGameManager>
 
         rewardController.GenerateNewRewards(currentZone, safeZoneFrequency, superZoneFrequency);
         wheelController.DisplayNewRewards(rewardController.GetPossibleRewards());
+
+        TriggerOnZonePrepared();
     }
 
     public void CollectReward(int rewardIndex)
@@ -47,5 +50,15 @@ public class CardGameManager : Singleton<CardGameManager>
     public void DisplayCollectedReward(int rewardIndex)
     {
         rewardController.DisplayReward(rewardIndex);
+    }
+
+    public void TriggerOnSpinWheel()
+    {
+        OnSpinWheel?.Invoke();
+    }
+
+    public void TriggerOnZonePrepared()
+    {
+        OnZonePrepared?.Invoke();
     }
 }
