@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Chest Gold
   icon: {fileID: 21300000, guid: 7fc2e421c99becf48855278375bcebc1, type: 3}
   minAmount: 1
-  maxAmount: 50
+  maxAmount: 5
   isBomb: 0

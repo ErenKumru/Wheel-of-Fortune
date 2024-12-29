@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Regenerator
   icon: {fileID: 21300000, guid: e478d72a4f7a2e040b6296c7051fefd0, type: 3}
   minAmount: 1
-  maxAmount: 50
+  maxAmount: 5
   isBomb: 0

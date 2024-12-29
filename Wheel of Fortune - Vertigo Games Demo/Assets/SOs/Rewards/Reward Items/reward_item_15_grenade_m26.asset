@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Grenade M26
   icon: {fileID: 21300000, guid: bf02c5d95624190479a63640c428a950, type: 3}
   minAmount: 1
-  maxAmount: 100
+  maxAmount: 10
   isBomb: 0

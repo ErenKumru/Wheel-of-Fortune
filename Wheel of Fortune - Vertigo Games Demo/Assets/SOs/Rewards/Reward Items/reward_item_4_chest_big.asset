@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Chest Big
   icon: {fileID: 21300000, guid: 715ca8bf964bac74c965ec9118120651, type: 3}
   minAmount: 1
-  maxAmount: 20
+  maxAmount: 3
   isBomb: 0

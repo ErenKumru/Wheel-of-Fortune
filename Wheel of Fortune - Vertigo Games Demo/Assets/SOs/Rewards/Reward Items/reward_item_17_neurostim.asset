@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Neurostim
   icon: {fileID: 21300000, guid: 365687778a8a58546997884a9f3ea6a8, type: 3}
   minAmount: 1
-  maxAmount: 100
+  maxAmount: 10
   isBomb: 0

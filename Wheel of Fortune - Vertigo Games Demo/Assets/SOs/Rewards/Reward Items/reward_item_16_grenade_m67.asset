@@ -16,5 +16,5 @@ MonoBehaviour:
   itemName: Grenade M67
   icon: {fileID: 21300000, guid: b1117528d11e6224b879481a20d4ba6c, type: 3}
   minAmount: 1
-  maxAmount: 50
+  maxAmount: 5
   isBomb: 0

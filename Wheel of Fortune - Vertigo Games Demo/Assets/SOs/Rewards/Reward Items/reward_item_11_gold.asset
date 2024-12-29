@@ -15,4 +15,6 @@ MonoBehaviour:
   id: 11
   itemName: Gold
   icon: {fileID: 21300000, guid: dc690f68bbb4d644eb9b7ff0d7fb6b32, type: 3}
+  minAmount: 1
+  maxAmount: 50
   isBomb: 0
