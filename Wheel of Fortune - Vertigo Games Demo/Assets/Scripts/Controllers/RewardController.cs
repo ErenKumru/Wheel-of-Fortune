@@ -6,6 +6,7 @@ public class RewardController : MonoBehaviour
 {
     [SerializeField] private RewardLibrarySO rewardLibrary;
     [SerializeField] private RewardDisplayer rewardDisplayer;
+    [SerializeField] private int currencyId;
 
     private Reward[] possibleRewards;
     private Dictionary<int, Reward> collectedRewards = new Dictionary<int, Reward>();
@@ -117,6 +118,16 @@ public class RewardController : MonoBehaviour
     public Reward[] GetPossibleRewards()
     {
         return possibleRewards;
+    }
+
+    public int GetCollectedCurrencyAmount()
+    {
+        if(collectedRewards.TryGetValue(currencyId, out Reward currencyReward))
+        {
+            return currencyReward.amount;
+        }
+
+        return 0;
     }
 
     public struct Reward

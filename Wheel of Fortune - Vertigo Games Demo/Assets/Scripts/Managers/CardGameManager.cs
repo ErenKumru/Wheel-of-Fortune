@@ -20,6 +20,8 @@ public class CardGameManager : Singleton<CardGameManager>
     [SerializeField] private int reviveCost = 25;
     private const string currencySaveID = "CURRENCY";
 
+    private bool canExit;
+
     protected override void AwakeSingleton()
     {
         Initialize();
@@ -27,12 +29,12 @@ public class CardGameManager : Singleton<CardGameManager>
 
     private void Start()
     {
+        LoadCurrency();
         GenerateRewards();
     }
 
     private void Initialize()
     {
-        LoadCurrency();
         zoneController.Initialize();
         rewardController.Initialize(reviveCost);
     }
@@ -42,7 +44,7 @@ public class CardGameManager : Singleton<CardGameManager>
         if(PlayerPrefs.HasKey(currencySaveID))
         {
             currentCurrency = PlayerPrefs.GetInt(currencySaveID);
-            //Display on UI via UIManager
+            UIManager.Instance.UpdateCurrencyText(currentCurrency);
         }
     }
 
@@ -88,6 +90,7 @@ public class CardGameManager : Singleton<CardGameManager>
         if(currentCurrency >= reviveCost)
         {
             currentCurrency -= reviveCost;
+            UIManager.Instance.UpdateCurrencyText(currentCurrency);
             rewardController.HideBombPanel();
             TriggerOnZonePrepared();
             return;
@@ -97,13 +100,44 @@ public class CardGameManager : Singleton<CardGameManager>
         UIManager.Instance.DisplayCurrencyWarning();
     }
 
+    public void ResetCurrency()
+    {
+        currentCurrency = 100;
+        SaveCurrency();
+        UIManager.Instance.UpdateCurrencyText(currentCurrency);
+    }
+
+    public void AddCurrency()
+    {
+        int amount = rewardController.GetCollectedCurrencyAmount();
+        currentCurrency += amount;
+        UIManager.Instance.UpdateCurrencyText(currentCurrency);
+        SaveCurrency();
+    }
+
+    public void SaveCurrency()
+    {
+        PlayerPrefs.SetInt(currencySaveID, currentCurrency);
+    }
+
+    public bool CanExit()
+    {
+        int currentZone = zoneController.GetCurrentZone();
+        int safeZoneFrequency = zoneController.GetSafeZoneFrequency();
+        int superZoneFrequency = zoneController.GetSuperZoneFrequency();
+
+        return canExit && (currentZone % safeZoneFrequency == 0 || currentZone % superZoneFrequency == 0);
+    }
+
     public void TriggerOnSpinWheel()
     {
+        canExit = false;
         OnSpinWheel?.Invoke();
     }
 
     public void TriggerOnZonePrepared()
     {
+        canExit = true;
         OnZonePrepared?.Invoke();
     }
 }
